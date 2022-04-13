@@ -10,19 +10,21 @@ import {AllProductsComponent} from "./all-products/all-products.component";
 import {MyBasketComponent} from "./my-basket/my-basket.component";
 import {MyAccountComponent} from "./my-account/my-account.component";
 import {MyOrdersComponent} from "./my-orders/my-orders.component";
+import {CommonsModule} from "../commons/commons.module";
 
 
 @NgModule({
   declarations: [HomeComponent, AllProductsComponent, MyBasketComponent, MyOrdersComponent, MyAccountComponent],
-  imports: [
-    CommonModule,
-    ClientRoutingModule,
-    SidebarModule,
-    ButtonModule,
-    ToastModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        CommonModule,
+        ClientRoutingModule,
+        SidebarModule,
+        ButtonModule,
+        ToastModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CommonsModule
+    ],
 })
 export class ClientModule {
 }
