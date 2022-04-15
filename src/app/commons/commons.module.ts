@@ -7,10 +7,13 @@ import {ToastModule} from "primeng/toast";
 import {ButtonModule} from "primeng/button";
 import {DialogModule} from "primeng/dialog";
 import {TableModule} from "primeng/table";
+import {HomeComponent} from "./home/home.component";
+import {SidebarModule} from "primeng/sidebar";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
-    ProductCardComponent,
+    ProductCardComponent,HomeComponent
   ],
   imports: [
     CommonModule,
@@ -20,10 +23,12 @@ import {TableModule} from "primeng/table";
     DialogModule,
     TooltipModule,
     TableModule,
-    ToastModule
+    ToastModule,
+    SidebarModule,
+    RouterModule
   ],
   exports: [
-    ProductCardComponent,
+    ProductCardComponent,HomeComponent
   ]
 })
 export class CommonsModule {

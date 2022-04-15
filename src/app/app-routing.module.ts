@@ -1,21 +1,26 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {HomeComponent} from "./commons/home/home.component";
 
-import {HomeComponent} from "./client/home/home.component";
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
   },
   {
     path: 'client',
     loadChildren: () => import('./client/client.module').then(mod => mod.ClientModule),
-    // canActivate: [ClientGuardService]
+  },
+  {
+    path: '**',
+    redirectTo: 'home'
   }
-  // {
-  //   path: '**',
-  //   redirectTo: ''  // }
 ];
 
 @NgModule({

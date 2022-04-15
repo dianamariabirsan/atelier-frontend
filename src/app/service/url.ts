@@ -4,3 +4,5 @@ export const clientUrl = baseUrl + '/client';
 export const productUrl = baseUrl + '/product';
 
 export const productsUrl = productUrl + '/products';
+
+export function productsDeleteAndGetById(id: string) { return `${productUrl}/${id}`;}

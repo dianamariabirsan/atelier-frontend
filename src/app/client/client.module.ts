@@ -5,16 +5,18 @@ import {ToastModule} from "primeng/toast";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SidebarModule} from "primeng/sidebar";
 import {CommonModule} from "@angular/common";
-import {HomeComponent} from "./home/home.component";
+import {HomeClientComponent} from "./home-client/home-client.component";
 import {AllProductsComponent} from "./all-products/all-products.component";
 import {MyBasketComponent} from "./my-basket/my-basket.component";
 import {MyAccountComponent} from "./my-account/my-account.component";
 import {MyOrdersComponent} from "./my-orders/my-orders.component";
 import {CommonsModule} from "../commons/commons.module";
+import {HttpClient} from "@angular/common/http";
+import {ProductService} from "../service/product.service";
 
 
 @NgModule({
-  declarations: [HomeComponent, AllProductsComponent, MyBasketComponent, MyOrdersComponent, MyAccountComponent],
+  declarations: [HomeClientComponent, AllProductsComponent, MyBasketComponent, MyOrdersComponent, MyAccountComponent],
     imports: [
         CommonModule,
         ClientRoutingModule,
@@ -25,6 +27,7 @@ import {CommonsModule} from "../commons/commons.module";
         ReactiveFormsModule,
         CommonsModule
     ],
+  providers: [HttpClient, ProductService]
 })
 export class ClientModule {
 }
