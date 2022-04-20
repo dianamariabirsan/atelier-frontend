@@ -13,24 +13,9 @@
       </div>
       <div class="row ml-1 mt-1">
         <button type="button" class="mr-2 btn btn-light" routerLinkActive="active"
-                style="width: 100%;" routerLink="/client/products"><i class="pi pi-file" style="float: left;"></i>Products</button>
+                style="width: 100%;" [routerLink]="['/client']"><i class="pi pi-file" style="float: left;"></i>Clients</button>
       </div>
-      <div class="row ml-1 mt-1">
-        <button type="button" class="mr-2 btn btn-light" routerLinkActive="active"
-                style="width: 100%;" [routerLink]="['orders']"><i class="pi pi-user-edit" style="float: left;"></i>My orders</button>
-      </div>
-      <div class="row ml-1 mt-1">
-        <button type="button" class="mr-2 btn btn-light" routerLinkActive="active"
-                style="width: 100%;" [routerLink]="['basket']"><i class="pi pi-user-edit" style="float: left;"></i>My basket</button>
-      </div>
-      <div class="row ml-1 mt-1">
-        <button type="button" class="mr-2 btn btn-light" routerLinkActive="active"
-                style="width: 100%;" [routerLink]="['account']"><i class="pi pi-inbox" style="float: left;"></i>My account</button>
-      </div>
-      <div class="row ml-1 mt-1">
-        <button type="button" class="mr-2 btn btn-light" routerLinkActive="active"
-                style="width: 100%;" (click)="logout()"><i class="pi pi-sign-out" style="float: left;"></i>Logout</button>
-      </div>
+
 
     </p-sidebar>
   </div>
