@@ -19,6 +19,7 @@ export class AllProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log("Nu se apeleaza")
     this.getAllProducts();
   }
 
@@ -32,16 +33,19 @@ export class AllProductsComponent implements OnInit, OnDestroy {
         id: 1,
         type: "Tip1",
         price: 20,
+        image: "../../../assets/product-image-placeholder.jpg"
       },
       {
         id: 2,
         type: "Tip2",
         price: 10,
+        image: "../../../assets/product-image-placeholder.jpg"
       },
       {
         id: 3,
         type: "Tip1",
         price: 100,
+        image: "../../../assets/product-image-placeholder.jpg"
       },
     ];
   }
