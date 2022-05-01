@@ -11,10 +11,11 @@ import {HomeComponent} from "./home/home.component";
 import {SidebarModule} from "primeng/sidebar";
 import {RouterModule} from "@angular/router";
 import { OrderCardComponent } from './order-card/order-card.component';
+import { MybasketCardComponent } from './mybasket-card/mybasket-card.component';
 
 @NgModule({
   declarations: [
-    ProductCardComponent,HomeComponent, OrderCardComponent
+    ProductCardComponent,HomeComponent, OrderCardComponent, MybasketCardComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +30,7 @@ import { OrderCardComponent } from './order-card/order-card.component';
     RouterModule
   ],
     exports: [
-        ProductCardComponent, HomeComponent, OrderCardComponent
+        ProductCardComponent, HomeComponent, OrderCardComponent, MybasketCardComponent
     ]
 })
 export class CommonsModule {
