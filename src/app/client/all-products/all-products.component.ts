@@ -19,7 +19,6 @@ export class AllProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    console.log("Nu se apeleaza")
     this.getAllProducts();
   }
 

@@ -12,6 +12,9 @@ import {SidebarModule} from "primeng/sidebar";
 import {RouterModule} from "@angular/router";
 import { OrderCardComponent } from './order-card/order-card.component';
 import { MybasketCardComponent } from './mybasket-card/mybasket-card.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { MybasketCardComponent } from './mybasket-card/mybasket-card.component';
     TableModule,
     ToastModule,
     SidebarModule,
-    RouterModule
+    RouterModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatIconModule
   ],
     exports: [
         ProductCardComponent, HomeComponent, OrderCardComponent, MybasketCardComponent

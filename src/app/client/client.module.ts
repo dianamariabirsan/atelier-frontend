@@ -13,6 +13,7 @@ import {MyOrdersComponent} from "./my-orders/my-orders.component";
 import {CommonsModule} from "../commons/commons.module";
 import {HttpClient} from "@angular/common/http";
 import {ProductService} from "../service/product.service";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {ProductService} from "../service/product.service";
         ToastModule,
         FormsModule,
         ReactiveFormsModule,
-        CommonsModule
+        CommonsModule,
+        MatButtonModule
     ],
   providers: [HttpClient, ProductService]
 })

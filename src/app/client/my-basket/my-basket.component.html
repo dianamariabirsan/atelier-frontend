@@ -1,1 +1,10 @@
-<p>my-basket works!</p>
+<h1 class="m-3">My basket</h1>
+<div *ngIf="!products || products.length === 0">
+  <h6>Empty basket</h6>
+</div>
+<div *ngIf="products && products.length > 0" style="display: flex; flex-wrap: wrap;">
+  <div *ngFor="let product of products">
+    <app-mybasket-card [product]="product" (messageToShow)="messageReceived($event)"></app-mybasket-card>
+  </div>
+  <button mat-flat-button>Place order</button>
+</div>

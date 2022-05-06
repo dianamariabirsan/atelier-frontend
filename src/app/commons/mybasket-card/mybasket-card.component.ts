@@ -1,5 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Order} from "../../model/models";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Order, Product} from "../../model/models";
+import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
+import {ProductService} from "../../service/product.service";
 
 @Component({
   selector: 'app-mybasket-card',
@@ -7,11 +10,27 @@ import {Order} from "../../model/models";
   styleUrls: ['./mybasket-card.component.css']
 })
 export class MybasketCardComponent implements OnInit {
-  @Input() order: Order | undefined;
+  @Input() product: Product | undefined;
+  @Output() messageToShow = new EventEmitter<any>();
+  subscriptions: Subscription[] = [];
+  display = false;
+  quantityForProduct: any;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(
+    private router: Router,
+    private productService: ProductService
+  ) {
   }
 
+  ngOnInit() {
+    this.quantityForProduct = this.product?.orderQuantity;
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  deleteProductFromBasket() {
+
+  }
 }
