@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {productsDeleteAndGetById, productsUrl} from "./url";
+import {ordersFilter, productsDeleteAndGetById, productsFilter, productsUrl} from "./url";
 import {Product} from "../model/models";
 
 @Injectable({
@@ -12,8 +12,8 @@ export class ProductService {
   constructor(private http: HttpClient) {
     this.httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
-      // 'Accept': '*/*',
-      // 'Access-Control-Allow-Origin': '*'
+      'Accept': '*/*',
+      'Access-Control-Allow-Origin': '*'
     });
   }
 
@@ -31,5 +31,9 @@ export class ProductService {
 
   deleteProductById(productId: number) {
     return this.http.delete(productsDeleteAndGetById(productId.toString()), { headers: this.httpHeaders });
+  }
+
+  filterProducts(filterText: string) {
+    return this.http.get(`${productsFilter}?filter=${filterText}`, { headers: this.httpHeaders });
   }
 }

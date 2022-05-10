@@ -1,9 +1,23 @@
 <h1 class="m-3">Products</h1>
-<div *ngIf="!products || products.length === 0">
-  <h6>There aren't any products to be displayed</h6>
-</div>
-<div *ngIf="products && products.length > 0" style="display: flex; flex-wrap: wrap;">
-  <div *ngFor="let product of products">
-    <app-product-card [product]="product" (messageToShow)="messageReceived($event)"></app-product-card>
+<div class="row">
+  <div class="col-1 offset-1">
+    Filter
+  </div>
+  <div class="col-2">
+    <input type="text" name="filter" [(ngModel)]="filterText">
+  </div>
+  <div class="col-2">
+    <button class="btn btn-primary" (click)="filter()"><i class="fa fa-search mr-2"></i>Filter</button>
+  </div>
+  <div class="col-2">
+    <button class="btn btn-primary" (click)="reset()">Reset</button>
+  </div>
+  <div *ngIf="!products || products.length === 0">
+    <h6>There aren't any products to be displayed</h6>
+  </div>
+  <div *ngIf="products && products.length > 0" style="display: flex; flex-wrap: wrap;">
+    <div *ngFor="let product of products">
+      <app-product-card [product]="product" (messageToShow)="messageReceived($event)"></app-product-card>
+    </div>
   </div>
 </div>

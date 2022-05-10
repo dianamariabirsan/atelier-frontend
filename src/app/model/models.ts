@@ -9,5 +9,20 @@ export interface Product {
 
 export interface Order {
   id?: number;
+  client?: Client;
+  status?: Status;
+}
+
+export enum Status {
+  APPROVED = 'APPROVED',
+  PENDING = 'PENDING',
+  ON_SHIPPING = 'ON_SHIPPING'
+}
+
+export interface Client {
+  id?: number;
+  name: string;
+  email: string;
+  phoneNumber: string;
 }
 

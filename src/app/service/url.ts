@@ -5,5 +5,9 @@ export const productUrl = baseUrl + '/product';
 export const orderUrl = baseUrl + '/order';
 
 export const productsUrl = productUrl + '/products';
+export const ordersUrl = orderUrl + '/orders';
+
+export const ordersFilter= `${orderUrl}/filter`;
+export const productsFilter= `${productUrl}/search`;
 
 export function productsDeleteAndGetById(id: string) { return `${productUrl}/${id}`;}

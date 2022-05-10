@@ -14,6 +14,7 @@ import {CommonsModule} from "../commons/commons.module";
 import {HttpClient} from "@angular/common/http";
 import {ProductService} from "../service/product.service";
 import {MatButtonModule} from "@angular/material/button";
+import {TableModule} from "primeng/table";
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {MatButtonModule} from "@angular/material/button";
         FormsModule,
         ReactiveFormsModule,
         CommonsModule,
-        MatButtonModule
+        MatButtonModule,
+        TableModule
     ],
   providers: [HttpClient, ProductService]
 })
