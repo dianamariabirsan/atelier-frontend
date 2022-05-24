@@ -33,7 +33,8 @@ export class ProductService {
     return this.http.delete(productsDeleteAndGetById(productId.toString()), { headers: this.httpHeaders });
   }
 
-  filterProducts(filterText: string) {
-    return this.http.get(`${productsFilter}?filter=${filterText}`, { headers: this.httpHeaders });
+  filterProducts(filter: string, minPrice: number, maxPrice: number, sortAsc: boolean) {
+    // @ts-ignore
+    return this.http.get(`${productsFilter}?filter=${filter, minPrice, maxPrice, sortAsc}`, { headers: this.httpHeaders });
   }
 }

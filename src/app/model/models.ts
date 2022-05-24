@@ -11,6 +11,7 @@ export interface Order {
   id?: number;
   client?: Client;
   status?: Status;
+  dateOfOrderAsTs?: number;
 }
 
 export enum Status {
