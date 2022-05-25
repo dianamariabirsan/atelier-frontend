@@ -9,9 +9,10 @@ export interface Product {
 
 export interface Order {
   id?: number;
-  client?: Client;
+  client?: User;
   status?: Status;
   dateOfOrderAsTs?: number;
+  shippingAddress?: string;
 }
 
 export enum Status {
@@ -20,10 +21,19 @@ export enum Status {
   ON_SHIPPING = 'ON_SHIPPING'
 }
 
-export interface Client {
+export interface User {
   id?: number;
   name: string;
   email: string;
   phoneNumber: string;
+  password?: string;
+  newPassword?: string;
+  rewritePassword?: string;
+  role?: string;
+}
+
+export enum Role {
+  CLIENT = 'CLIENT',
+  ADMINISTRATOR = 'ADMINISTRATOR'
 }
 

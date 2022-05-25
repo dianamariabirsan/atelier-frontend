@@ -21,9 +21,7 @@ export class OrderService {
     return this.http.get(orderUrl, { headers: this.httpHeaders });
   }
 
-  filterOrders(orderStatus: string, dateOfLastOrder: number, sortDesc: boolean) {
-    // @ts-ignore
-    return this.http.get(`${ordersFilter}?filter=${orderStatus, dateOfLastOrder, sortDesc}`, { headers: this.httpHeaders });
+  filterOrders(orderStatus: string) {
+    return this.http.get(`${ordersFilter}?filter=${orderStatus}`, { headers: this.httpHeaders });
   }
-
 }

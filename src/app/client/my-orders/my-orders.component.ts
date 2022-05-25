@@ -93,4 +93,17 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
     this.filterText = '';
     this.getAllOrders();
   }
+
+  getOrderStatus() {
+    let orderStatus = []
+
+    for (const [propertyKey, propertyValue] of Object.entries(Status)) {
+      if (!Number.isNaN(Number(propertyKey))) {
+        continue;
+      }
+      orderStatus.push({ id: propertyValue, name: propertyKey });
+    }
+
+    return orderStatus;
+  }
 }

@@ -11,7 +11,10 @@ import {ToastService} from "../../service/toast.service";
 })
 export class AllProductsComponent implements OnInit, OnDestroy {
   products: Product[] | undefined;
-  filterText: string | undefined;
+  filterText: any;
+  minPrice: any;
+  maxPrice: any;
+  sortAscending: any;
   subscriptions: Subscription[] = [];
 
   constructor(
@@ -70,7 +73,7 @@ export class AllProductsComponent implements OnInit, OnDestroy {
   }
 
   getProducts() {
-    if (this.filterText && this.filterText.length > 0){
+    if (this.filterText && this.filterText.length > 0) {
       this.filter();
     } else {
       this.getAllProducts();
@@ -79,12 +82,14 @@ export class AllProductsComponent implements OnInit, OnDestroy {
 
   filter() {
     // @ts-ignore
-    this.subscriptions.push(this.productService.filterProducts(this.filterText).subscribe((res: Product[]) => {
-      this.products = res;
-    }, (err: { error: { message: string; }; }) => {
-      this.toastService.addError(err.error.message);
-      console.log(err);
-    }));
+    this.subscriptions.push(this.productService
+      .filterProducts(this.filterText, this.minPrice, this.maxPrice, this.sortAscending)
+      .subscribe((res: any) => {
+        this.products = res;
+      }, (err: { error: { message: string; }; }) => {
+        this.toastService.addError(err.error.message);
+        console.log(err);
+      }));
   }
 
   reset() {

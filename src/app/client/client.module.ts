@@ -15,6 +15,8 @@ import {HttpClient} from "@angular/common/http";
 import {ProductService} from "../service/product.service";
 import {MatButtonModule} from "@angular/material/button";
 import {TableModule} from "primeng/table";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import {TableModule} from "primeng/table";
         ReactiveFormsModule,
         CommonsModule,
         MatButtonModule,
-        TableModule
+        TableModule,
+        MatCheckboxModule,
+        MatSelectModule
     ],
   providers: [HttpClient, ProductService]
 })
