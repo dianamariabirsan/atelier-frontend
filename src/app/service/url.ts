@@ -16,3 +16,5 @@ export const ordersFilter= `${orderUrl}/filter`;
 export const productsFilter= `${productUrl}/search`;
 
 export function productsDeleteAndGetById(id: string) { return `${productUrl}/${id}`;}
+
+export function ordersDeleteAndGetById(id: string) { return `${ordersUrl}/${id}`;}

@@ -8,7 +8,7 @@ import {CommonModule} from "@angular/common";
 import {HomeClientComponent} from "./home-client/home-client.component";
 import {AllProductsComponent} from "./all-products/all-products.component";
 import {MyBasketComponent} from "./my-basket/my-basket.component";
-import {MyAccountComponent} from "./my-account/my-account.component";
+import {MyAccountComponent} from "../commons/my-account/my-account.component";
 import {MyOrdersComponent} from "./my-orders/my-orders.component";
 import {CommonsModule} from "../commons/commons.module";
 import {HttpClient} from "@angular/common/http";

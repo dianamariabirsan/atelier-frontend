@@ -11,6 +11,7 @@ import {ProductService} from "../../service/product.service";
 })
 export class MybasketCardComponent implements OnInit {
   @Input() product: Product | undefined;
+  @Input() order: Order | undefined;
   @Output() messageToShow = new EventEmitter<any>();
   subscriptions: Subscription[] = [];
   display = false;

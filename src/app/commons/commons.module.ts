@@ -14,10 +14,11 @@ import { MybasketCardComponent } from './mybasket-card/mybasket-card.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import { OrderCardComponent } from './order-card/order-card.component';
 
 @NgModule({
   declarations: [
-    ProductCardComponent,HomeComponent, MybasketCardComponent
+    ProductCardComponent,HomeComponent, MybasketCardComponent, OrderCardComponent,
   ],
   imports: [
     CommonModule,

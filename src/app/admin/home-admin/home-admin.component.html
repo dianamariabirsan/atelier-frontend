@@ -5,7 +5,7 @@
                [dismissible]="false" [modal]="false">
       <div class="row">
         <div class="col-12 d-flex justify-content-center align-items-center">
-          <img src="../../assets/logo.PNG" style="width: 200px; height: auto;" />
+          <img src="../../assets/logo.png" style="width: 200px; height: auto;" />
         </div>
       </div>
       <div class="row m-2 mb-3">
@@ -13,12 +13,17 @@
       </div>
       <div class="row ml-1 mt-1">
         <button type="button" class="mr-2 btn btn-light" routerLinkActive="active"
-                style="width: 100%;" [routerLink]="['/client']"><i class="pi pi-file" style="float: left;"></i>Clients</button>
+                style="width: 100%;" [routerLink]="['orders-management']"><i class="pi pi-inbox" style="float: left;"></i>Orders management</button>
       </div>
       <div class="row ml-1 mt-1">
         <button type="button" class="mr-2 btn btn-light" routerLinkActive="active"
-                style="width: 100%;" [routerLink]="['/admin']"><i class="pi pi-file" style="float: left;"></i>Admin</button>
+                style="width: 100%;" [routerLink]="['account']"><i class="pi pi-inbox" style="float: left;"></i>My account</button>
       </div>
+      <div class="row ml-1 mt-1">
+        <button type="button" class="mr-2 btn btn-light" routerLinkActive="active"
+                style="width: 100%;" (click)="logout()"><i class="pi pi-sign-out" style="float: left;"></i>Logout</button>
+      </div>
+
     </p-sidebar>
   </div>
   <div class="col-10">
@@ -27,3 +32,4 @@
 </div>
 
 <p-toast></p-toast>
+

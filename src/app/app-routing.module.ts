@@ -18,6 +18,10 @@ const routes: Routes = [
     loadChildren: () => import('./client/client.module').then(mod => mod.ClientModule),
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(mod => mod.AdminModule),
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
