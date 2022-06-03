@@ -1,21 +1,21 @@
 <div class="row d-flex m-4" style="width: 300px; height: auto; border: 2px solid #ffc107;
-border-radius: 5px;">
+border-radius: 5px;" *ngIf="product">
   <div class="col-12">
     <div class="row">
       <div class="col-12 mt-2">
-        <h4>{{product?.id}}</h4>
+        <h4>{{product.id}}</h4>
       </div>
     </div>
 
     <div class="row">
       <div class="col-12 mt-2">
-        <h6>{{product?.price}}</h6>
+        <h6>{{product.price}}</h6>
       </div>
     </div>
 
     <div class="row">
       <div class="col-12 mt-2">
-        <h6>{{product?.type}}</h6>
+        <h6>{{product.type}}</h6>
       </div>
     </div>
 
@@ -23,13 +23,10 @@ border-radius: 5px;">
       <div class="col-12 mt-2">
         <mat-form-field appearance="fill">
           <mat-label>Quantity</mat-label>
-          <mat-select [(value)]="quantityForProduct">
-            <mat-option>None</mat-option>
-            <mat-option value="option1">1</mat-option>
-            <mat-option value="option2">2</mat-option>
-            <mat-option value="option3">3</mat-option>
-            <mat-option value="option4">4</mat-option>
-            <mat-option value="option5">5</mat-option>
+          <mat-select [(value)]="product.orderQuantity">
+            <mat-option  *ngFor="let quantity of [0, 1, 2, 3, 4, 5]" [value]="quantity">
+              {{ quantity }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
@@ -37,11 +34,11 @@ border-radius: 5px;">
 
     <div class="row">
       <div class="col-12 d-flex justify-content-center align-items-center">
-        <img src={{product?.image}}, style="width: 200px; height: auto;"/>
+        <img [src]="product.image" style="width: 200px; height: auto;"/>
       </div>
     </div>
 
-    <div class="row mb-3">
+    <div class="row m-3 justify-content-end">
       <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="deleteProductFromBasket()">
         <mat-icon>delete</mat-icon>
       </button>

@@ -20,29 +20,7 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getAllOrders();
-
-    this.orders = [
-      {
-        id: 1,
-        client: {
-          id: 1,
-          name: 'Pop Maria',
-          email: 'pop_maria@yahoo.com',
-          phoneNumber: '0756475839'
-        },
-        status: Status.PENDING
-      },
-      {
-        id: 2,
-        client: {
-          id: 2,
-          name: 'Pop Ion',
-          email: 'pop_ion@yahoo.com',
-          phoneNumber: '0756475839'
-        },
-        status: Status.ON_SHIPPING
-      }
-    ]
+    // this.mockOrders();
   }
 
   ngOnDestroy() {
@@ -53,18 +31,6 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
     // @ts-ignore
     this.subscriptions.push(this.orderService.getAllOrders().subscribe((data: Order[]) => {
       this.orders = data;
-      // this.orders.forEach((course) => {
-      //   this.subscriptions.push(this.coursesService.getNumberStudentsForCourse(course.id).subscribe(
-      //     (res: { studentsNumber: number }) => {
-      //       const id = this.courses.findIndex((c) => c.id === course.id);
-      //       this.courses[id].studentsSignedIn = res.studentsNumber;
-      //     },
-      //     (err) => {
-      //       this.toastService.addError(err.error.message);
-      //       console.log(err);
-      //     }
-      //   ))
-      // });
     }, (err: { error: { message: string; }; }) => {
       this.toastService.addError(err.error.message);
       console.log(err);
@@ -105,5 +71,31 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
     }
 
     return orderStatus;
+  }
+
+  private mockOrders() {
+
+    this.orders = [
+      {
+        id: 1,
+        client: {
+          id: 1,
+          name: 'Pop Maria',
+          email: 'pop_maria@yahoo.com',
+          phoneNumber: '0756475839'
+        },
+        status: Status.PENDING
+      },
+      {
+        id: 2,
+        client: {
+          id: 2,
+          name: 'Pop Ion',
+          email: 'pop_ion@yahoo.com',
+          phoneNumber: '0756475839'
+        },
+        status: Status.ON_SHIPPING
+      }
+    ]
   }
 }

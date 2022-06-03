@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {ordersDeleteAndGetById, ordersFilter, orderUrl} from "./url";
+import {ordersDeleteAndGetById, ordersFilter, ordersUrl, orderUrl} from "./url";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class OrderService {
 
 
   getAllOrders() {
-    return this.http.get(orderUrl, { headers: this.httpHeaders });
+    return this.http.get(ordersUrl, { headers: this.httpHeaders });
   }
 
   filterOrders(orderStatus: string) {

@@ -27,15 +27,7 @@ export class MyBasketComponent implements OnInit, OnDestroy {
   }
 
   private getAllProducts() {
-    this.products = [
-      {
-        id: 1,
-        type: "Tip1",
-        price: 20,
-        image: "../../../assets/product-image-placeholder.jpg",
-        orderQuantity: 2
-      },
-    ];
+    this.mockBasket();
   }
 
   messageReceived(msg: any) {
@@ -66,4 +58,29 @@ export class MyBasketComponent implements OnInit, OnDestroy {
     }
   }
 
+  private mockBasket() {
+    this.products = [
+      {
+        id: 1,
+        type: "Tip1",
+        price: 20,
+        image: '../../../assets/product-image-placeholder.jpg',
+        orderQuantity: 2
+      },
+      {
+        id: 2,
+        type: "Tip2",
+        price: 30,
+        image: '../../../assets/product-image-placeholder.jpg',
+        orderQuantity: 2
+      },
+      {
+        id: 3,
+        type: "Tip3",
+        price: 40,
+        image: '../../../assets/product-image-placeholder.jpg',
+        orderQuantity: 1
+      }
+    ];
+  }
 }

@@ -24,26 +24,7 @@ export class AllProductsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getAllProducts();
-    this.products = [
-      {
-        id: 1,
-        type: "Tip1",
-        price: 20,
-        image: "../../../assets/product-image-placeholder.jpg"
-      },
-      {
-        id: 2,
-        type: "Tip2",
-        price: 10,
-        image: "../../../assets/product-image-placeholder.jpg"
-      },
-      {
-        id: 3,
-        type: "Tip1",
-        price: 100,
-        image: "../../../assets/product-image-placeholder.jpg"
-      },
-    ];
+    // this.mockProducts();
   }
 
   ngOnDestroy() {
@@ -54,18 +35,6 @@ export class AllProductsComponent implements OnInit, OnDestroy {
     // @ts-ignore
     this.subscriptions.push(this.productService.getAllProducts().subscribe((data: Product[]) => {
       this.products = data;
-      // this.orders.forEach((course) => {
-      //   this.subscriptions.push(this.coursesService.getNumberStudentsForCourse(course.id).subscribe(
-      //     (res: { studentsNumber: number }) => {
-      //       const id = this.courses.findIndex((c) => c.id === course.id);
-      //       this.courses[id].studentsSignedIn = res.studentsNumber;
-      //     },
-      //     (err) => {
-      //       this.toastService.addError(err.error.message);
-      //       console.log(err);
-      //     }
-      //   ))
-      // });
     }, (err: { error: { message: string; }; }) => {
       this.toastService.addError(err.error.message);
       console.log(err);
@@ -94,6 +63,9 @@ export class AllProductsComponent implements OnInit, OnDestroy {
 
   reset() {
     this.filterText = '';
+    this.minPrice = undefined;
+    this.maxPrice = undefined;
+    this.sortAscending = undefined;
     this.getAllProducts();
   }
 
@@ -123,5 +95,28 @@ export class AllProductsComponent implements OnInit, OnDestroy {
         break;
       }
     }
+  }
+
+  private mockProducts() {
+    this.products = [
+      {
+        id: 1,
+        type: "Tip1",
+        price: 20,
+        image: "../../../assets/product-image-placeholder.jpg"
+      },
+      {
+        id: 2,
+        type: "Tip2",
+        price: 10,
+        image: "../../../assets/product-image-placeholder.jpg"
+      },
+      {
+        id: 3,
+        type: "Tip1",
+        price: 100,
+        image: "../../../assets/product-image-placeholder.jpg"
+      },
+    ];
   }
 }
