@@ -19,15 +19,22 @@ export class MyBasketComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.getAllProducts();
+    this.getBasketProducts();
+    // this.mockBasket();
   }
 
   ngOnDestroy() {
     this.subscription.forEach(s => s.unsubscribe());
   }
 
-  private getAllProducts() {
-    this.mockBasket();
+  private getBasketProducts() {
+    // @ts-ignore
+    this.subscriptions.push(this.orderService.getBasketProducts().subscribe((data: Product[]) => {
+      this.products = data;
+    }, (err: { error: { message: string; }; }) => {
+      this.toastService.addError(err.error.message);
+      console.log(err);
+    }))
   }
 
   messageReceived(msg: any) {
@@ -43,7 +50,7 @@ export class MyBasketComponent implements OnInit, OnDestroy {
       case 'success': {
         this.toastService.addSuccess(msg.message);
         if (msg.message.indexOf('Product deleted') > -1) {
-          this.getAllProducts();
+          this.getBasketProducts();
         }
         break;
       }

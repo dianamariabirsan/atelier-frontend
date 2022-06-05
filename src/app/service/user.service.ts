@@ -20,7 +20,6 @@ export class UserService {
 
   saveAccountSettings(user: User) {
     const obj = JSON.parse(JSON.stringify(user));
-    delete obj.picture;
     delete obj.id;
     delete obj.role;
     this.httpHeaders = new HttpHeaders({
@@ -53,5 +52,31 @@ export class UserService {
       return obj;
     }
     return undefined;
+  }
+
+
+  isAuthenticated(): boolean {
+    const user = this.getCurrentUser();
+    if (user) {
+      return true;
+    } else{
+      return false;
+    }
+  }
+
+  isAuthenticatedAdmin(): boolean {
+    const user = this.getCurrentUser();
+    if (user && user.role === 'ADMIN') {
+      return true;
+    }
+    return false;
+  }
+
+  isAuthenticatedClient(): boolean {
+    const user = this.getCurrentUser();
+    if (user && user.role === 'CLIENT') {
+      return true;
+    }
+    return false;
   }
 }

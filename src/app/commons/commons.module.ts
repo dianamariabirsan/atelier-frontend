@@ -10,15 +10,14 @@ import {TableModule} from "primeng/table";
 import {HomeComponent} from "./home/home.component";
 import {SidebarModule} from "primeng/sidebar";
 import {RouterModule} from "@angular/router";
-import { MybasketCardComponent } from './mybasket-card/mybasket-card.component';
+import {MybasketCardComponent} from './mybasket-card/mybasket-card.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-import { OrderCardComponent } from './order-card/order-card.component';
 
 @NgModule({
   declarations: [
-    ProductCardComponent,HomeComponent, MybasketCardComponent, OrderCardComponent,
+    ProductCardComponent, HomeComponent, MybasketCardComponent,
   ],
   imports: [
     CommonModule,
@@ -35,9 +34,9 @@ import { OrderCardComponent } from './order-card/order-card.component';
     MatButtonModule,
     MatIconModule
   ],
-    exports: [
-        ProductCardComponent, HomeComponent, MybasketCardComponent
-    ]
+  exports: [
+    ProductCardComponent, HomeComponent, MybasketCardComponent
+  ]
 })
 export class CommonsModule {
 }

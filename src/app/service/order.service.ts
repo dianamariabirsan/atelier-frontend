@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {ordersDeleteAndGetById, ordersFilter, ordersUrl, orderUrl} from "./url";
+import {basketUrl, ordersDeleteAndGetById, ordersFilter, ordersUrl, orderUrl} from "./url";
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +27,9 @@ export class OrderService {
 
   deleteOrderById(orderId: number) {
     return this.http.delete(ordersDeleteAndGetById(orderId.toString()), { headers: this.httpHeaders });
+  }
+
+  getBasketProducts() {
+    return this.http.get(basketUrl, { headers: this.httpHeaders });
   }
 }
