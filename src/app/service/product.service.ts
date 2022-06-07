@@ -34,8 +34,23 @@ export class ProductService {
   }
 
   filterProducts(filter: string, minPrice: number, maxPrice: number, sortAsc: boolean) {
-    return this.http.get(
-      `${productsFilter}?filter=${filter}&minPrice=${minPrice}&maxPrice=${maxPrice}&sortAsc=${sortAsc}`,
+    console.log('filterProducts', filter, minPrice, maxPrice, sortAsc);
+    let queryStringParams = [];
+    if (filter) {
+      queryStringParams.push(`filter=${filter}`)
+    }
+    if (minPrice) {
+      queryStringParams.push(`minPrice=${minPrice}`)
+    }
+    if (maxPrice) {
+      queryStringParams.push(`maxPrice=${maxPrice}`)
+    }
+    if (sortAsc !== undefined) {
+      queryStringParams.push(`sortAsc=${sortAsc}`)
+    }
+    const queryString = queryStringParams.length > 0 ? `?${queryStringParams.join('&')}` : '';
+
+    return this.http.get(`${productsFilter}${queryString}`,
       {headers: this.httpHeaders}
     );
   }

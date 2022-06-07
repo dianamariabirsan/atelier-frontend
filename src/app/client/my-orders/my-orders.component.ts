@@ -3,6 +3,7 @@ import {Order, Status} from "../../model/models";
 import {Subscription} from "rxjs";
 import {ToastService} from "../../service/toast.service";
 import {OrderService} from "../../service/order.service";
+import {StepState} from "@angular/cdk/stepper";
 
 @Component({
   selector: 'app-my-orders',
@@ -13,6 +14,7 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
   orders: Order[] = [];
   filterText: string | undefined;
   subscriptions: Subscription[] = [];
+  statuses: Status[] = Object.keys(Status).map(v => v as Status);
 
   constructor(private orderService: OrderService,
               private toastService: ToastService) {
