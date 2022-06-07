@@ -9,7 +9,9 @@ export interface Product {
 
 export interface Order {
   id?: number;
-  client?: User;
+  products? : Product[]
+  clientId?: number;
+  client?: User,
   status?: Status;
   dateOfOrderAsTs?: number;
   shippingAddress?: string;

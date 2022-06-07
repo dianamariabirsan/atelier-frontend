@@ -91,37 +91,35 @@ export class OrdersManagementComponent implements OnInit, OnDestroy {
     this.router.navigate([`client/my-order-admin/${this.orders}`]);
   }
 
-  deleteOrder() {
+  deleteOrder(orderId: number) {
     // @ts-ignore
-    this.subscriptions.push(this.orderService.deleteOrderById()(this.orders).subscribe((res) => {
+    this.subscriptions.push(this.orderService.deleteOrderById(orderId).subscribe((res) => {
       this.showMessage('delete');
     }, (err: { error: { message: string; }; }) => {
       this.showMessage(err.error.message);
       console.log(err);
     }))
+    this.getAllOrders()
   }
 
   private mockData() {
     this.orders = [
       {
-        id: 1,
-        client: {
-          id: 1,
-          name: 'Pop Maria',
-          email: 'pop_maria@yahoo.com',
-          phoneNumber: '0756475839'
-        },
-        status: Status.PENDING
-      },
-      {
-        id: 2,
-        client: {
-          id: 2,
-          name: 'Pop Ion',
-          email: 'pop_ion@yahoo.com',
-          phoneNumber: '0756475839'
-        },
-        status: Status.ON_SHIPPING
+        id: 7,
+        products: [
+          {
+            id: 3,
+            type: 'jucarie',
+            description: 'Trenulet de lemn pentru copii',
+            price: 50,
+            image: '../../assets/products/tren.png',
+            orderQuantity: 0
+          }
+        ],
+        clientId: 1,
+        shippingAddress: 'Aleea Fabricii, 67, Cluj-Napoca',
+        dateOfOrderAsTs: 1654625982,
+        status: Status.APPROVED
       }
     ]
   }

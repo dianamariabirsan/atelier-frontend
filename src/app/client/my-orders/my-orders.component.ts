@@ -22,7 +22,7 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getAllOrders();
-    // this.mockOrders();
+    this.mockOrders();
   }
 
   ngOnDestroy() {
@@ -33,6 +33,7 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
     // @ts-ignore
     this.subscriptions.push(this.orderService.getAllOrders().subscribe((data: Order[]) => {
       this.orders = data;
+      console.log(data);
     }, (err: { error: { message: string; }; }) => {
       this.toastService.addError(err.error.message);
       console.log(err);
@@ -76,27 +77,23 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
   }
 
   private mockOrders() {
-
     this.orders = [
       {
-        id: 1,
-        client: {
-          id: 1,
-          name: 'Pop Maria',
-          email: 'pop_maria@yahoo.com',
-          phoneNumber: '0756475839'
-        },
-        status: Status.PENDING
-      },
-      {
-        id: 2,
-        client: {
-          id: 2,
-          name: 'Pop Ion',
-          email: 'pop_ion@yahoo.com',
-          phoneNumber: '0756475839'
-        },
-        status: Status.ON_SHIPPING
+        id: 7,
+        products: [
+          {
+            id: 3,
+            type: 'jucarie',
+            description: 'Trenulet de lemn pentru copii',
+            price: 50,
+            image: '../../assets/products/tren.png',
+            orderQuantity: 0
+          }
+        ],
+        clientId: 1,
+        shippingAddress: 'Aleea Fabricii, 67, Cluj-Napoca',
+        dateOfOrderAsTs: 1654625982,
+        status: Status.APPROVED
       }
     ]
   }

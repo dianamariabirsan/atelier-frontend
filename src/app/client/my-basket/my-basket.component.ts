@@ -3,6 +3,7 @@ import {Product} from "../../model/models";
 import {Subscription} from "rxjs";
 import {ToastService} from "../../service/toast.service";
 import {OrderService} from "../../service/order.service";
+import {isNotNullUndefinedEmpty} from "../../utils/functions-utils";
 
 @Component({
   selector: 'app-my-basket',
@@ -89,5 +90,14 @@ export class MyBasketComponent implements OnInit, OnDestroy {
         orderQuantity: 1
       }
     ];
+  }
+
+  placeOrder() {
+    // this.orderService.placeOrder().subscribe(() => {
+    //   this.toastService.addSuccess('Ordered successfully!');
+    // }, (err: { error: { message: string; }; }) => {
+    //   console.log(err);
+    //   this.toastService.addError(err.error.message);
+    // })
   }
 }

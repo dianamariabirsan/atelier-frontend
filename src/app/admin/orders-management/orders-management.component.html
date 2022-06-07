@@ -33,18 +33,13 @@
           <tr>
             <td>{{order.id}}</td>
             <td>
-              <div>
-                {{order.client.id}}
-                {{order.client.name}}
-                {{order.client.email}}
-                {{order.client.phoneNumber}}
-              </div>
+              <div>{{ order.client | json }}</div>
             </td>
             <td>{{order.status}}</td>
             <td>
-              <button *ngIf="true" type="button"
+              <button type="button"
                       class="btn btn-danger col-2 offset-1 ml-4 mr-1 d-flex align-items-center justify-content-center"
-                      (click)="deleteOrder()"><i class="fa fa-trash mr-1"></i></button>
+                      (click)="deleteOrder(order.id)"><i class="fa fa-trash mr-1"></i></button>
             </td>
           </tr>
         </ng-template>
