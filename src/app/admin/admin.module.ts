@@ -14,24 +14,26 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatSelectModule} from "@angular/material/select";
 import {HomeAdminComponent} from './home-admin/home-admin.component';
 import {OrdersManagementComponent} from "./orders-management/orders-management.component";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
   declarations: [HomeAdminComponent, OrdersManagementComponent],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    SidebarModule,
-    ButtonModule,
-    ToastModule,
-    FormsModule,
-    ReactiveFormsModule,
-    CommonsModule,
-    MatButtonModule,
-    TableModule,
-    MatCheckboxModule,
-    MatSelectModule
-  ],
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        SidebarModule,
+        ButtonModule,
+        ToastModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CommonsModule,
+        MatButtonModule,
+        TableModule,
+        MatCheckboxModule,
+        MatSelectModule,
+        MatIconModule
+    ],
   providers: [HttpClient, ProductService]
 })
 export class AdminModule {

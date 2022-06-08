@@ -24,5 +24,16 @@ border-radius: 5px;" *ngIf="product">
         <h6>{{product.description}}</h6>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-12">
+        <button (click)="addToBasket(product)" mat-raised-button color="primary">
+          <mat-icon>
+            add_shopping_cart
+          </mat-icon>
+          Add to Cart
+        </button>
+      </div>
+    </div>
   </div>
 </div>

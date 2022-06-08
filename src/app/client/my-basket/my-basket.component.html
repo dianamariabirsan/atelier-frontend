@@ -1,17 +1,33 @@
 <div class="container">
   <h1 class="row m-3">My basket</h1>
-  <div *ngIf="!products || products.length === 0" class="row">
+  <div *ngIf="!order.products || order.products.length === 0" class="row">
     <h6>Empty basket</h6>
   </div>
 
-  <div *ngIf="products && products.length > 0" class="container">
+  <div *ngIf="order.products && order.products.length > 0" class="container">
     <div class="row">
-      <div *ngFor="let product of products" class="col flex-wrap">
+      <div *ngFor="let product of order.products" class="col flex-wrap">
         <app-mybasket-card [product]="product" (messageToShow)="messageReceived($event)"></app-mybasket-card>
       </div>
     </div>
   </div>
-  <div class="row">
-    <button mat-flat-button class="" (click)="placeOrder()">Place order</button>
+
+  <div class="row d-flex justify-content-center align-items-center">
+    <form name="form" class="mt-2 col-12" (ngSubmit)="placeOrder()" #f="ngForm" style="width: 400px;">
+      <div class="form-group row" [ngClass]="{ 'has-error': f.submitted && !shippingAddress.valid }">
+        <label class="col-2 offset-2">Shipping address</label>
+        <input type="text" class="col-7 form-control" name="shippingAddress" [(ngModel)]="order.shippingAddress"
+               #shippingAddress="ngModel" placeholder="Shipping address" required/>
+        <div *ngIf="f.submitted && !shippingAddress.valid" class="help-block">Field mustn't be empty
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="ui-fluid col-2 offset-2">
+          <button type="submit" class="btn btn-warning" [disabled]="f.invalid">Place order</button>
+        </div>
+      </div>
+    </form>
   </div>
+
 </div>

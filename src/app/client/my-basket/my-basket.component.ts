@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Product} from "../../model/models";
+import {FormGroup} from '@angular/forms';
+import {AUTHENTICATED_USER, BASKET_PRODUCTS, Order, Product, Status} from "../../model/models";
 import {Subscription} from "rxjs";
 import {ToastService} from "../../service/toast.service";
 import {OrderService} from "../../service/order.service";
-import {isNotNullUndefinedEmpty} from "../../utils/functions-utils";
 
 @Component({
   selector: 'app-my-basket',
@@ -11,8 +11,9 @@ import {isNotNullUndefinedEmpty} from "../../utils/functions-utils";
   styleUrls: ['./my-basket.component.css']
 })
 export class MyBasketComponent implements OnInit, OnDestroy {
-  products: Product[] | undefined;
+  order: Order = {};
   subscription: Subscription[] = [];
+  form = FormGroup;
 
   constructor(
     private toastService: ToastService,
@@ -20,6 +21,7 @@ export class MyBasketComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.order = {shippingAddress: ''}
     this.getBasketProducts();
     // this.mockBasket();
   }
@@ -30,12 +32,7 @@ export class MyBasketComponent implements OnInit, OnDestroy {
 
   private getBasketProducts() {
     // @ts-ignore
-    this.subscriptions.push(this.orderService.getBasketProducts().subscribe((data: Product[]) => {
-      this.products = data;
-    }, (err: { error: { message: string; }; }) => {
-      this.toastService.addError(err.error.message);
-      console.log(err);
-    }))
+    this.products = JSON.parse(localStorage.getItem(BASKET_PRODUCTS));
   }
 
   messageReceived(msg: any) {
@@ -67,7 +64,7 @@ export class MyBasketComponent implements OnInit, OnDestroy {
   }
 
   private mockBasket() {
-    this.products = [
+    this.order.products = [
       {
         id: 1,
         type: "Tip1",
@@ -93,11 +90,37 @@ export class MyBasketComponent implements OnInit, OnDestroy {
   }
 
   placeOrder() {
-    // this.orderService.placeOrder().subscribe(() => {
-    //   this.toastService.addSuccess('Ordered successfully!');
-    // }, (err: { error: { message: string; }; }) => {
-    //   console.log(err);
-    //   this.toastService.addError(err.error.message);
-    // })
+    this.prepareOrder()
+    console.log("MB: " + this.order);
+
+    if (this.order.products) {
+      this.orderService.placeOrder(this.order).subscribe(() => {
+        this.toastService.addSuccess('Ordered successfully!');
+      }, (err: { error: { message: string; }; }) => {
+        console.log(err);
+        this.toastService.addError(err.error.message);
+      })
+    } else {
+      this.toastService.addError("Cannot place order with empty basket!");
+    }
+
+    this.removeOrderFromLocalStorage();
+  }
+
+  private prepareOrder() {
+    // @ts-ignore
+    this.order.products = JSON.parse(localStorage.getItem(BASKET_PRODUCTS));
+    // @ts-ignore
+    let clientId = JSON.parse(localStorage.getItem(AUTHENTICATED_USER));
+    if (!clientId) {
+      clientId = 1;
+    }
+    this.order.clientId = clientId;
+    this.order.status = Status.APPROVED;
+    this.order.dateOfOrderAsTs = Date.now();
+  }
+
+  private removeOrderFromLocalStorage() {
+    localStorage.removeItem(BASKET_PRODUCTS);
   }
 }

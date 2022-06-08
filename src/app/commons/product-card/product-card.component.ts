@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Product} from "../../model/models";
+import {BASKET_PRODUCTS, Product} from "../../model/models";
 import {Subscription} from "rxjs";
-import {ProductService} from "../../service/product.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -16,15 +15,23 @@ export class ProductCardComponent implements OnInit {
   display = false;
 
   constructor(
-    private router: Router,
-    private productService: ProductService
+    private router: Router
   ) {
   }
 
   ngOnInit() {
   }
 
-  ngOnDestroy() {
-    this.subscriptions.forEach(s => s.unsubscribe());
+  addToBasket(product: Product) {
+    // @ts-ignore
+    let basketProducts = JSON.parse(localStorage.getItem(BASKET_PRODUCTS));
+
+    if (basketProducts == null) {
+      basketProducts = [];
+    }
+
+    basketProducts.push(product);
+    console.log("PC: " + product)
+    localStorage.setItem(BASKET_PRODUCTS, JSON.stringify(basketProducts));
   }
 }

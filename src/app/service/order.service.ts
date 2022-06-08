@@ -35,6 +35,6 @@ export class OrderService {
   }
 
   placeOrder(order: Order) {
-    // return this.http.post(orderUrl, { headers: this.httpHeaders });
+    return this.http.post(orderUrl, JSON.stringify(order), { headers: this.httpHeaders });
   }
 }

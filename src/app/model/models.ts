@@ -39,3 +39,6 @@ export enum Role {
   ADMIN = 'ADMIN'
 }
 
+export const BASKET_PRODUCTS: string = "basket-products"
+export const AUTHENTICATED_USER: string = "authenticated-user"
+
