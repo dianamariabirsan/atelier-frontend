@@ -4,6 +4,8 @@ import {Subscription} from "rxjs";
 import {Router} from "@angular/router";
 import {OrderService} from "../../service/order.service";
 import {ToastService} from "../../service/toast.service";
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-orders-management',
@@ -15,6 +17,7 @@ export class OrdersManagementComponent implements OnInit, OnDestroy {
   filterText: string | undefined;
   subscriptions: Subscription[] = [];
   @Output() messageToShow = new EventEmitter<any>();
+  faTrash = faTrash;
 
   constructor(
     private router: Router,
@@ -34,7 +37,7 @@ export class OrdersManagementComponent implements OnInit, OnDestroy {
   private getAllOrders() {
     // @ts-ignore
     this.subscriptions.push(this.orderService.getAllOrders().subscribe((data: Order[]) => {
-      this.orders = data;
+      this.orders = [...data];
     }, (err: { error: { message: string; }; }) => {
       this.toastService.addError(err.error.message);
       console.log(err);
@@ -93,13 +96,16 @@ export class OrdersManagementComponent implements OnInit, OnDestroy {
 
   deleteOrder(orderId: number) {
     // @ts-ignore
+
     this.subscriptions.push(this.orderService.deleteOrderById(orderId).subscribe((res) => {
       this.showMessage('delete');
+      this.getAllOrders()
+      this.orders = [...this.orders.filter(order => order.id !== orderId)]
     }, (err: { error: { message: string; }; }) => {
       this.showMessage(err.error.message);
       console.log(err);
     }))
-    this.getAllOrders()
+
   }
 
   private mockData() {

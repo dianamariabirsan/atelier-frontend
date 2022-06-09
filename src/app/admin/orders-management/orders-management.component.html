@@ -41,8 +41,10 @@
             </td>
             <td>{{order.status}}</td>
             <td>
-              <button mat-fab color="primary" (click)="deleteOrder(order.id)">
-                <mat-icon>delete</mat-icon>
+              <button type="button"
+                      class="btn btn-danger col-2 offset-1 ml-4 mr-1 d-flex align-items-center justify-content-center"
+                      (click)="deleteOrder(order.id)">
+                <fa-icon [icon]="faTrash"></fa-icon>
               </button>
             </td>
           </tr>

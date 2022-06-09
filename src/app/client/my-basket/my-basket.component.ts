@@ -32,7 +32,8 @@ export class MyBasketComponent implements OnInit, OnDestroy {
 
   private getBasketProducts() {
     // @ts-ignore
-    this.products = JSON.parse(localStorage.getItem(BASKET_PRODUCTS));
+    const productsBasket = JSON.parse(localStorage.getItem(BASKET_PRODUCTS));
+    this.order.products = productsBasket ? [...productsBasket] : [];
   }
 
   messageReceived(msg: any) {
@@ -91,7 +92,7 @@ export class MyBasketComponent implements OnInit, OnDestroy {
 
   placeOrder() {
     this.prepareOrder()
-    console.log("MB: " + this.order);
+    console.log("MB: " + JSON.stringify(this.order));
 
     if (this.order.products) {
       this.orderService.placeOrder(this.order).subscribe(() => {

@@ -9,6 +9,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {MatIconModule} from "@angular/material/icon";
     MatSelectModule,
     MatButtonModule,
     MatIconModule,
+    FontAwesomeModule
   ],
   providers: [MessageService, HttpClient],
   bootstrap: [AppComponent]

@@ -30,8 +30,9 @@ export class ProductCardComponent implements OnInit {
       basketProducts = [];
     }
 
+    product.orderQuantity=1;
     basketProducts.push(product);
-    console.log("PC: " + product)
+    console.log("PC: " + JSON.stringify(product));
     localStorage.setItem(BASKET_PRODUCTS, JSON.stringify(basketProducts));
   }
 }
