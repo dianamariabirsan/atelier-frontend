@@ -1,0 +1,16 @@
+<form (submit)="register()">
+
+  <input type="text" class="col-7 form-control" name="userName" [(ngModel)]="user.name"
+         placeholder="Username" required/>
+  <input type="email" class="col-7 form-control" name="email" [(ngModel)]="user.email"
+         placeholder="Email" required/>
+  <input type="text" class="col-7 form-control" name="phoneNumber" [(ngModel)]="user.phoneNumber"
+         placeholder="Phone number" required/>
+  <input type="password" class="col-7 form-control" name="password" [(ngModel)]="user.password"
+         placeholder="Password" required/>
+  <input type="password" class="col-7 form-control" name="rewritePassword" [(ngModel)]="user.rewritePassword"
+         placeholder="Confirm Password" required/>
+
+  <button type="submit" class="mr-2 btn btn-dark">Register</button>
+
+</form>

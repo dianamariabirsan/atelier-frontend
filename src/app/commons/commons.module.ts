@@ -14,10 +14,13 @@ import {MybasketCardComponent} from './mybasket-card/mybasket-card.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
+import {AllProductsComponent} from "./all-products/all-products.component";
+import {RegisterComponent} from "./register/register.component";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
-    ProductCardComponent, HomeComponent, MybasketCardComponent,
+    ProductCardComponent, HomeComponent, MybasketCardComponent, AllProductsComponent, RegisterComponent
   ],
   imports: [
     CommonModule,
@@ -32,7 +35,8 @@ import {MatIconModule} from "@angular/material/icon";
     RouterModule,
     MatSelectModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatCheckboxModule,
   ],
   exports: [
     ProductCardComponent, HomeComponent, MybasketCardComponent

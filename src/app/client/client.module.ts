@@ -6,7 +6,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SidebarModule} from "primeng/sidebar";
 import {CommonModule} from "@angular/common";
 import {HomeClientComponent} from "./home-client/home-client.component";
-import {AllProductsComponent} from "./all-products/all-products.component";
 import {MyBasketComponent} from "./my-basket/my-basket.component";
 import {MyAccountComponent} from "../commons/my-account/my-account.component";
 import {MyOrdersComponent} from "./my-orders/my-orders.component";
@@ -20,7 +19,7 @@ import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
-  declarations: [HomeClientComponent, AllProductsComponent, MyBasketComponent, MyOrdersComponent, MyAccountComponent],
+  declarations: [HomeClientComponent, MyBasketComponent, MyOrdersComponent, MyAccountComponent],
     imports: [
         CommonModule,
         ClientRoutingModule,

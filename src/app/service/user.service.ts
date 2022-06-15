@@ -1,8 +1,22 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {User} from "../model/models";
+import {Role, User, UserCredentials} from "../model/models";
 import {map} from "rxjs";
-import {userLogout, userSaveAccountSettings} from "./url";
+import {userLogout, userRegister, userSaveAccountSettings} from "./url";
+
+const users = [{
+  email: 'ana.pop@yahoo.com',
+  name: 'Pop Ana',
+  phoneNumber: '0758576857',
+  password: 'popana',
+  role: Role.CLIENT
+}, {
+  email: 'admin@yahoo.com',
+  name: 'admin',
+  phoneNumber: '0758576857',
+  password: 'admin',
+  role: Role.ADMIN
+}]
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +42,28 @@ export class UserService {
     return this.http.put(userSaveAccountSettings, JSON.stringify(obj), { headers: this.httpHeaders });
   }
 
+  register(user: User) {
+    const obj = JSON.parse(JSON.stringify(user));
+    delete obj.id;
+    delete obj.role;
+    this.httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.post(userRegister, JSON.stringify(obj), { headers: this.httpHeaders });
+  }
+
   public setCurrentUserInLocalStorage(obj: User) {
     localStorage.setItem('currentUser', JSON.stringify(obj));
+  }
+
+  login(credentials: UserCredentials): boolean {
+    const user = this.getUser(credentials);
+    if (user) {
+      this.setCurrentUserInLocalStorage(user)
+      return true;
+    }
+    return false;
   }
 
   logout() {
@@ -43,6 +77,10 @@ export class UserService {
 
   removeUserFromLocalStorage() {
     localStorage.removeItem('currentUser');
+  }
+
+  getUser(credentials: UserCredentials): User | undefined {
+    return users.find(u => u.email === credentials.email && u.password === credentials.password)
   }
 
   getCurrentUser(): User | undefined {

@@ -34,6 +34,11 @@ export interface User {
   role?: string;
 }
 
+export interface UserCredentials {
+  email: string;
+  password: string;
+}
+
 export enum Role {
   CLIENT = 'CLIENT',
   ADMIN = 'ADMIN'
