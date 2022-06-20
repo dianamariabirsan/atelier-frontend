@@ -23,7 +23,7 @@ export class OrderService {
   }
 
   filterOrders(orderStatus: string) {
-    return this.http.get(`${ordersFilter}?filter=${orderStatus}`, { headers: this.httpHeaders });
+    return this.http.get(`${ordersFilter}?orderStatus=${orderStatus}`, { headers: this.httpHeaders });
   }
 
   deleteOrderById(orderId: number) {

@@ -15,6 +15,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 export class OrdersManagementComponent implements OnInit, OnDestroy {
   @Input() orders: Order[] = [];
   filterText: string | undefined;
+  statuses: Status[] = Object.keys(Status).map(v => v as Status);
   subscriptions: Subscription[] = [];
   @Output() messageToShow = new EventEmitter<any>();
   faTrash = faTrash;
@@ -27,7 +28,7 @@ export class OrdersManagementComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getAllOrders();
-    this.mockData();
+    // this.mockData();
   }
 
   ngOnDestroy() {

@@ -22,7 +22,7 @@ export class MyOrdersComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getAllOrders();
-    this.mockOrders();
+    // this.mockOrders();
   }
 
   ngOnDestroy() {

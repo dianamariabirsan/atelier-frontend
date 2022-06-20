@@ -20,7 +20,7 @@ export interface Order {
 export enum Status {
   APPROVED = 'APPROVED',
   PENDING = 'PENDING',
-  ON_SHIPPING = 'ON_SHIPPING'
+  SHIPPING = 'SHIPPING'
 }
 
 export interface User {

@@ -6,9 +6,7 @@
   <div class="col-2">
     <mat-select [(ngModel)]="filterText">
       <mat-option>None</mat-option>
-      <mat-option>APPROVED</mat-option>
-      <mat-option>PENDING</mat-option>
-      <mat-option>ON_SHIPPING</mat-option>
+      <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
     </mat-select>
   </div>
   <div class="col-2">
@@ -37,7 +35,12 @@
               <div>{{ order.client | json }}</div>
             </td>
             <td>
-              <div>{{ order.products | json }}</div>
+              <div>
+                <label>Products: </label>
+                <li *ngFor="let product of order.products">
+                  {{ product.description }}
+                  {{ product.price }} RON
+              </div>
             </td>
             <td>{{order.status}}</td>
             <td>
